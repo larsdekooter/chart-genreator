@@ -5,6 +5,7 @@ import Input from "@/components/Input";
 import Layout from "@/components/Layout";
 import Option from "@/components/Option";
 import Utils from "@/lib/Utils";
+import { spaceMono } from "@/lib/fonts";
 import { PartialChartData, PartialChartOptions } from "@/lib/types";
 import { ChartType } from "chart.js";
 
@@ -32,7 +33,7 @@ export default function Home() {
                   backgroundColor: Utils.CHART_COLORS.blue,
                   label: "Example",
                   borderRadius: Number.MAX_VALUE,
-                  barThickness: 25,
+                  barThickness: 70,
                 },
               ],
             }}
@@ -56,29 +57,28 @@ export default function Home() {
             }}
             type="bar"
             isExample={true}
+            id="exampleCanvas"
           />
         </div>
-        <Input>
-          {["line", "bar", "bubble", "doughnut", "pie", "scatter"].map(
-            (type) => (
-              <Option
-                key={type}
-                value={type}
-                onChoose={(event) => {
-                  const type = event.currentTarget.value as
-                    | "line"
-                    | "bar"
-                    | "bubble"
-                    | "doughnut"
-                    | "pie"
-                    | "scatter";
-                  setType(type);
-                }}
-              >
-                {type}
-              </Option>
-            )
-          )}
+        <h1 className={`text-4xl my-5 ${spaceMono.className}`}>
+          Download Chart
+        </h1>
+        <Input text="Choose file type">
+          {["JPG", "PNG"].map((type) => (
+            <Option
+              key={type}
+              value={type}
+              onChoose={(event) => {
+                Utils.downloadChart(
+                  event.currentTarget.value as "PNG" | "JPG",
+                  "exampleCanvas",
+                  "Example_Chart"
+                );
+              }}
+            >
+              {type}
+            </Option>
+          ))}
         </Input>
       </div>
     </Layout>

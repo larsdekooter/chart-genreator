@@ -15,7 +15,7 @@ export default function Option({
 }) {
   return (
     <option
-      className="appearance-none w-full h-full absolute text-left top-0 -z-10 duration-200 border-x-2 border-[#dee2e6] border-solid left-0 pl-5 pt-2 cursor-pointer hover:bg-slate-200 capitalize hidden"
+      className="appearance-none w-full h-full absolute text-left top-0 -z-10 duration-200 border-x-2 border-[#dee2e6] border-solid left-0 pl-5 pt-2 cursor-pointer hover:bg-slate-200 capitalize hidden text-black"
       onClick={(event) => {
         const optionClicked = event.currentTarget as HTMLOptionElement;
         const menu = optionClicked.parentElement;
@@ -27,7 +27,6 @@ export default function Option({
             child.innerText = optionClicked.value;
           }
         }
-        return;
         onClick(event);
       }}
       value={value}

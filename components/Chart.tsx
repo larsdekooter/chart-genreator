@@ -43,11 +43,13 @@ export default function ChartComponent({
   options,
   type,
   isExample = false,
+  id,
 }: {
   data: ChartData;
   options: ChartOptions<ChartTypes>;
   type: ChartTypes;
   isExample?: boolean;
+  id: string;
 }) {
   if (!isExample) {
     const width = 1000;
@@ -60,6 +62,7 @@ export default function ChartComponent({
             width={width}
             height={height}
             options={options}
+            id={id}
           />
         );
       case "bar":
@@ -69,6 +72,7 @@ export default function ChartComponent({
             height={height}
             width={width}
             options={options}
+            id={id}
           />
         );
       case "bubble":
@@ -78,6 +82,7 @@ export default function ChartComponent({
             height={height}
             width={width}
             options={options}
+            id={id}
           />
         );
       case "doughnut":
@@ -87,6 +92,7 @@ export default function ChartComponent({
             height={height}
             width={width}
             options={options}
+            id={id}
           />
         );
       case "pie":
@@ -96,6 +102,7 @@ export default function ChartComponent({
             height={height}
             width={width}
             options={options}
+            id={id}
           />
         );
       case "scatter":
@@ -105,6 +112,7 @@ export default function ChartComponent({
             height={height}
             width={width}
             options={options}
+            id={id}
           />
         );
 
@@ -115,6 +123,7 @@ export default function ChartComponent({
             width={1000}
             height={height}
             options={options}
+            id={id}
           />
         );
     }
@@ -130,6 +139,7 @@ export default function ChartComponent({
               width={width}
               height={height}
               options={options}
+              id={id}
             />
             <button
               className={`p-3 bg-[#f4f4f5] rounded-xl hover:border-[#bed7f1] hover:border-[2px] hover:bg-[#e0ecf8] border-[#f4f4f5]  ${spaceMono.className}`}
@@ -150,6 +160,7 @@ export default function ChartComponent({
                     height={height}
                     width={width}
                     options={options}
+                    id={id}
                   />
                 );
 
@@ -173,6 +184,7 @@ export default function ChartComponent({
               height={height}
               width={width}
               options={options}
+              id={id}
             />
             <button
               className={`p-3 bg-[#f4f4f5] rounded-xl hover:border-[#bed7f1] hover:border-[2px] hover:bg-[#e0ecf8] border-[#f4f4f5]  ${spaceMono.className}`}
@@ -193,6 +205,7 @@ export default function ChartComponent({
                     height={height}
                     width={width}
                     options={options}
+                    id={id}
                   />
                 );
 
@@ -216,6 +229,7 @@ export default function ChartComponent({
               height={height}
               width={width}
               options={options}
+              id={id}
             />{" "}
             <button
               className={`p-3 bg-[#f4f4f5] rounded-xl hover:border-[#bed7f1] hover:border-[2px] hover:bg-[#e0ecf8] border-[#f4f4f5]  ${spaceMono.className}`}
@@ -236,6 +250,7 @@ export default function ChartComponent({
                     height={height}
                     width={width}
                     options={options}
+                    id={id}
                   />
                 );
 
@@ -259,6 +274,7 @@ export default function ChartComponent({
               height={height}
               width={width}
               options={options}
+              id={id}
             />{" "}
             <button
               className={`p-3 bg-[#f4f4f5] rounded-xl hover:border-[#bed7f1] hover:border-[2px] hover:bg-[#e0ecf8] border-[#f4f4f5]  ${spaceMono.className}`}
@@ -279,6 +295,7 @@ export default function ChartComponent({
                     height={height}
                     width={width}
                     options={options}
+                    id={id}
                   />
                 );
 
@@ -302,6 +319,7 @@ export default function ChartComponent({
               height={height}
               width={width}
               options={options}
+              id={id}
             />{" "}
             <button
               className={`p-3 bg-[#f4f4f5] rounded-xl hover:border-[#bed7f1] hover:border-[2px] hover:bg-[#e0ecf8] border-[#f4f4f5]  ${spaceMono.className}`}
@@ -322,6 +340,7 @@ export default function ChartComponent({
                     height={height}
                     width={width}
                     options={options}
+                    id={id}
                   />
                 );
 
@@ -345,6 +364,7 @@ export default function ChartComponent({
               height={height}
               width={width}
               options={options}
+              id={id}
             />{" "}
             <button
               className={`p-3 bg-[#f4f4f5] rounded-xl hover:border-[#bed7f1] hover:border-[2px] hover:bg-[#e0ecf8] border-[#f4f4f5]  ${spaceMono.className}`}
@@ -365,6 +385,7 @@ export default function ChartComponent({
                     height={height}
                     width={width}
                     options={options}
+                    id={id}
                   />
                 );
 
@@ -389,6 +410,7 @@ export default function ChartComponent({
               width={1000}
               height={height}
               options={options}
+              id={id}
             />{" "}
             <button
               className={`p-3 bg-[#f4f4f5] rounded-xl hover:border-[#bed7f1] hover:border-[2px] hover:bg-[#e0ecf8] border-[#f4f4f5]  ${spaceMono.className}`}
@@ -409,6 +431,7 @@ export default function ChartComponent({
                     height={height}
                     width={width}
                     options={options}
+                    id={id}
                   />
                 );
 

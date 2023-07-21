@@ -150,4 +150,10 @@ export default class Utils {
   static color(index: number) {
     return Utils.COLORS[index % Utils.COLORS.length];
   }
+  static downloadChart(extension: "JPG" | "PNG", id: string, name: string) {
+    const link = document.createElement("a");
+    link.download = `${name}.${extension.toLowerCase()}`;
+    link.href = (document.getElementById(id) as HTMLCanvasElement).toDataURL();
+    link.click();
+  }
 }

@@ -1,7 +1,13 @@
 "use client";
 import { MouseEvent, ReactNode, useState } from "react";
 
-export default function Input({ children }: { children?: ReactNode }) {
+export default function Input({
+  children,
+  text,
+}: {
+  children?: ReactNode;
+  text: string;
+}) {
   function wait(ms: number) {
     return new Promise((resolve) => {
       setTimeout(resolve, ms);
@@ -12,6 +18,8 @@ export default function Input({ children }: { children?: ReactNode }) {
     if (!isExpanded) {
       setExpanded(true);
       const menu = event.target as HTMLDivElement;
+      (document.getElementById("input") as HTMLSpanElement).style.color =
+        "black";
       menu.style.borderColor = "black";
       const children = menu.children;
       const menuOptions = [];
@@ -38,6 +46,8 @@ export default function Input({ children }: { children?: ReactNode }) {
     } else {
       const menu = event.target as HTMLDivElement;
       menu.style.borderColor = "#dee2e6";
+      (document.getElementById("input") as HTMLSpanElement).style.color =
+        "#9CA38F";
       const children = menu.children;
       const menuOptions = [];
       //@ts-ignore
@@ -69,9 +79,9 @@ export default function Input({ children }: { children?: ReactNode }) {
     >
       <span
         id="input"
-        className="w-3/4 absolute left-5 top-1/4 text-left text-gray-400  pointer-events-none"
+        className="w-3/4 absolute left-5 top-1/4 text-left text-[#9CA38F]  pointer-events-none"
       >
-        Select your type of chart
+        {text}
       </span>
       <span
         id="arrow"
