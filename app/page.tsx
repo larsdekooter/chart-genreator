@@ -5,8 +5,15 @@ import Input from "@/components/Input";
 import Layout from "@/components/Layout";
 import Option from "@/components/Option";
 import Utils from "@/lib/Utils";
+import { PartialChartData, PartialChartOptions } from "@/lib/types";
+import { ChartType } from "chart.js";
+
+import { useState } from "react";
 
 export default function Home() {
+  const [chartData, setChartData] = useState({} as PartialChartData);
+  const [chartOptions, setChartOptions] = useState({} as PartialChartOptions);
+  const [type, setType] = useState("" as ChartType);
   return (
     <Layout>
       <div className="flex flex-col items-start">
@@ -54,7 +61,20 @@ export default function Home() {
         <Input>
           {["line", "bar", "bubble", "doughnut", "pie", "scatter"].map(
             (type) => (
-              <Option key={type} value={type} onClick={() => {}}>
+              <Option
+                key={type}
+                value={type}
+                onChoose={(event) => {
+                  const type = event.currentTarget.value as
+                    | "line"
+                    | "bar"
+                    | "bubble"
+                    | "doughnut"
+                    | "pie"
+                    | "scatter";
+                  setType(type);
+                }}
+              >
                 {type}
               </Option>
             )

@@ -9,9 +9,7 @@ export default function Input({ children }: { children?: ReactNode }) {
   }
   const [isExpanded, setExpanded] = useState(false);
   const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
-    console.log("handleClick");
     if (!isExpanded) {
-      console.log("true");
       setExpanded(true);
       const menu = event.target as HTMLDivElement;
       menu.style.borderColor = "black";

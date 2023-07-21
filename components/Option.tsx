@@ -5,11 +5,11 @@ import { MouseEvent, MouseEventHandler, ReactNode } from "react";
 export default function Option({
   children,
   value,
-  onClick,
+  onChoose: onClick,
 }: {
   children?: ReactNode;
   value: string;
-  onClick: (
+  onChoose: (
     event: MouseEvent<HTMLOptionElement, globalThis.MouseEvent>
   ) => MouseEventHandler<HTMLOptionElement> | undefined | void;
 }) {
