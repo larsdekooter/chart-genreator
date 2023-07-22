@@ -15,7 +15,7 @@ export default function ArrayInputWrapper({
       className="w-fit bg-[#fbfbff] px-20 py-10 h-fit flex flex-col justify-center items-center rounded-2xl"
       id={id}
     >
-      <h1 className="text-4xl">Labels</h1>
+      <h1 className={`text-4xl ${spaceMono.className}`}>Labels</h1>
       <div className="flex flex-col items-center">
         <ArrayInputComponent placeholder={placeholder} />
         <ArrayInputComponent placeholder={placeholder} />

@@ -1,5 +1,6 @@
 "use client";
 
+import ArrayDatasetWrapper from "@/components/ArrayDatasetWrapper";
 import ArrayInputWrapper from "@/components/ArrayInputWrapper";
 import ChartComponent from "@/components/Chart";
 import Input from "@/components/Input";
@@ -33,8 +34,6 @@ export default function Home() {
 
                   backgroundColor: Utils.CHART_COLORS.blue,
                   label: "Example",
-                  borderRadius: Number.MAX_VALUE,
-                  barThickness: 70,
                 },
               ],
             }}
@@ -43,9 +42,9 @@ export default function Home() {
                 line: {
                   tension: 0,
                   borderWidth: 2,
-                  borderColor: "rgba(47, 97, 68, 1)",
+                  borderColor: "rgba(0,0,0,1)",
                   fill: "start",
-                  backgroundColor: "rgba(47, 97, 68, 0.3)",
+                  backgroundColor: "rgba(0,0,0, 0.3)",
                 },
                 point: { backgroundColor: "rgba(47, 97, 68, 1)" },
               },
@@ -130,6 +129,42 @@ export default function Home() {
             Confirm Labels
           </button>
           <div className="h-40"></div>
+          <ArrayDatasetWrapper id="datasetInput" />
+          <button
+            className={`${spaceMono.className} w-fit p-3 bg-green-400 rounded-xl hover:border-green-500 border-[1px] border-b-green-400 hover:bg-green-300 duration-200`}
+            onClick={(e) => {
+              const ADW = document.getElementById("datasetInput");
+              const parentOfDatasets = ADW?.children.item(1);
+              let divChild: HTMLDivElement;
+              const datasets = [];
+              //@ts-ignore
+              for (divChild of parentOfDatasets?.children) {
+                // [0: DataInputs[], 1: AddDataButton, 2: BackgroundColorH1, 3: ColorInput, 4: LabelInput, 5: BorderLine]
+                const dataInputs = divChild.children.item(0);
+                const backgroundColorInput = divChild.children.item(
+                  3
+                ) as HTMLInputElement;
+                const labelInput = divChild.children.item(
+                  4
+                ) as HTMLInputElement;
+                const dataValues: number[] = [];
+                let inputChild: HTMLInputElement;
+                //@ts-ignore
+                for (inputChild of dataInputs?.children) {
+                  dataValues.push(parseInt(inputChild.value));
+                }
+                const backgroundColor = backgroundColorInput.value;
+                const label = labelInput.value;
+                datasets.push({ data: dataValues, backgroundColor, label });
+              }
+              const data = chartData;
+              data.datasets = datasets;
+              setChartData(data);
+              console.log(chartData);
+            }}
+          >
+            Confirm Datasets
+          </button>
         </>
       </div>
     </Layout>
