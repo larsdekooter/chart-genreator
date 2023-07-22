@@ -18,8 +18,6 @@ export default function Input({
     if (!isExpanded) {
       setExpanded(true);
       const menu = event.target as HTMLDivElement;
-      (document.getElementById("input") as HTMLSpanElement).style.color =
-        "black";
       menu.style.borderColor = "black";
       const children = menu.children;
       const menuOptions = [];
@@ -29,6 +27,8 @@ export default function Input({
         else if (child instanceof HTMLSpanElement) {
           if (child.id === "arrow") {
             child.style.transform = "rotate(180deg) ";
+          } else if (child.id === "input") {
+            child.style.color = "black";
           }
         }
       }
@@ -46,8 +46,6 @@ export default function Input({
     } else {
       const menu = event.target as HTMLDivElement;
       menu.style.borderColor = "#dee2e6";
-      (document.getElementById("input") as HTMLSpanElement).style.color =
-        "#9CA38F";
       const children = menu.children;
       const menuOptions = [];
       //@ts-ignore
@@ -56,6 +54,8 @@ export default function Input({
         else if (child instanceof HTMLSpanElement) {
           if (child.id === "arrow") {
             child.style.transform = "rotate(0deg)";
+          } else if (child.id === "input") {
+            child.style.color = "#9CA38F";
           }
         }
       }
@@ -74,7 +74,7 @@ export default function Input({
   };
   return (
     <button
-      className="min-w-[20rem] border-[#dee2e6] border-2 border-solid rounded h-12 relative cursor-pointer  p-3 duration-200 capitalize"
+      className="min-w-[20rem] border-[#dee2e6] border-2 border-solid rounded h-12 relative cursor-pointer  p-3 duration-200"
       onClick={handleClick}
     >
       <span
