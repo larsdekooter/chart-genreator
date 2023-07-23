@@ -142,7 +142,7 @@ export default function ChartComponent({
               id={id}
             />
             <button
-              className={`p-3 bg-[#f4f4f5] rounded-xl hover:border-[#bed7f1] hover:border-[2px] hover:bg-[#e0ecf8] border-[#f4f4f5]  ${spaceMono.className}`}
+              className={`p-3 bg-[#f4f4f5] rounded-xl hover:border-[#bed7f1] border-[2px] hover:bg-[#e0ecf8] border-[#f4f4f5]  ${spaceMono.className} dark:bg-[#242222] dark:border-[#242222] dark:text-white dark:hover:border-[blue]`}
               onClick={(event) => {
                 const button = event.currentTarget as HTMLButtonElement;
                 const parentElement = button.parentElement;
@@ -187,7 +187,7 @@ export default function ChartComponent({
               id={id}
             />
             <button
-              className={`p-3 bg-[#f4f4f5] rounded-xl hover:border-[#bed7f1] hover:border-[2px] hover:bg-[#e0ecf8] border-[#f4f4f5]  ${spaceMono.className}`}
+              className={`p-3 bg-[#f4f4f5] rounded-xl hover:border-[#bed7f1] border-[2px] hover:bg-[#e0ecf8] border-[#f4f4f5]  ${spaceMono.className} dark:bg-[#242222] dark:border-[#242222] dark:text-white dark:hover:border-[blue]`}
               onClick={(event) => {
                 const button = event.currentTarget as HTMLButtonElement;
                 const parentElement = button.parentElement;
@@ -232,7 +232,7 @@ export default function ChartComponent({
               id={id}
             />{" "}
             <button
-              className={`p-3 bg-[#f4f4f5] rounded-xl hover:border-[#bed7f1] hover:border-[2px] hover:bg-[#e0ecf8] border-[#f4f4f5]  ${spaceMono.className}`}
+              className={`p-3 bg-[#f4f4f5] rounded-xl hover:border-[#bed7f1] border-[2px] hover:bg-[#e0ecf8] border-[#f4f4f5]  ${spaceMono.className} dark:bg-[#242222] dark:border-[#242222] dark:text-white dark:hover:border-[blue]`}
               onClick={(event) => {
                 const button = event.currentTarget as HTMLButtonElement;
                 const parentElement = button.parentElement;
@@ -277,7 +277,7 @@ export default function ChartComponent({
               id={id}
             />{" "}
             <button
-              className={`p-3 bg-[#f4f4f5] rounded-xl hover:border-[#bed7f1] hover:border-[2px] hover:bg-[#e0ecf8] border-[#f4f4f5]  ${spaceMono.className}`}
+              className={`p-3 bg-[#f4f4f5] rounded-xl hover:border-[#bed7f1] border-[2px] hover:bg-[#e0ecf8] border-[#f4f4f5]  ${spaceMono.className} dark:bg-[#242222] dark:border-[#242222] dark:text-white dark:hover:border-[blue]`}
               onClick={(event) => {
                 const button = event.currentTarget as HTMLButtonElement;
                 const parentElement = button.parentElement;
@@ -322,7 +322,7 @@ export default function ChartComponent({
               id={id}
             />{" "}
             <button
-              className={`p-3 bg-[#f4f4f5] rounded-xl hover:border-[#bed7f1] hover:border-[2px] hover:bg-[#e0ecf8] border-[#f4f4f5]  ${spaceMono.className}`}
+              className={`p-3 bg-[#f4f4f5] rounded-xl hover:border-[#bed7f1] border-[2px] hover:bg-[#e0ecf8] border-[#f4f4f5]  ${spaceMono.className} dark:bg-[#242222] dark:border-[#242222] dark:text-white dark:hover:border-[blue]`}
               onClick={(event) => {
                 const button = event.currentTarget as HTMLButtonElement;
                 const parentElement = button.parentElement;
@@ -367,7 +367,7 @@ export default function ChartComponent({
               id={id}
             />{" "}
             <button
-              className={`p-3 bg-[#f4f4f5] rounded-xl hover:border-[#bed7f1] hover:border-[2px] hover:bg-[#e0ecf8] border-[#f4f4f5]  ${spaceMono.className}`}
+              className={`p-3 bg-[#f4f4f5] rounded-xl hover:border-[#bed7f1] border-[2px] hover:bg-[#e0ecf8] border-[#f4f4f5]  ${spaceMono.className} dark:bg-[#242222] dark:border-[#242222] dark:text-white dark:hover:border-[blue]`}
               onClick={(event) => {
                 const button = event.currentTarget as HTMLButtonElement;
                 const parentElement = button.parentElement;
@@ -413,7 +413,7 @@ export default function ChartComponent({
               id={id}
             />{" "}
             <button
-              className={`p-3 bg-[#f4f4f5] rounded-xl hover:border-[#bed7f1] hover:border-[2px] hover:bg-[#e0ecf8] border-[#f4f4f5]  ${spaceMono.className}`}
+              className={`p-3 bg-[#f4f4f5] rounded-xl hover:border-[#bed7f1] border-[2px] hover:bg-[#e0ecf8] border-[#f4f4f5]  ${spaceMono.className} dark:bg-[#242222] dark:border-[#242222] dark:text-white dark:hover:border-[blue]`}
               onClick={(event) => {
                 const button = event.currentTarget as HTMLButtonElement;
                 const parentElement = button.parentElement;

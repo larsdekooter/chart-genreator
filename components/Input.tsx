@@ -28,7 +28,7 @@ export default function Input({
           if (child.id === "arrow") {
             child.style.transform = "rotate(180deg) ";
           } else if (child.id === "input") {
-            child.style.color = "black";
+            // child.style.color = "black";
           }
         }
       }
@@ -45,7 +45,9 @@ export default function Input({
       return;
     } else {
       const menu = event.target as HTMLDivElement;
-      menu.style.borderColor = "#dee2e6";
+      window.document.documentElement.classList.contains("dark")
+        ? "#2e2d2d"
+        : "#dee2e6";
       const children = menu.children;
       const menuOptions = [];
       //@ts-ignore
@@ -55,7 +57,7 @@ export default function Input({
           if (child.id === "arrow") {
             child.style.transform = "rotate(0deg)";
           } else if (child.id === "input") {
-            child.style.color = "#9CA38F";
+            // child.style.color = "#9CA38F";
           }
         }
       }
@@ -74,12 +76,12 @@ export default function Input({
   };
   return (
     <button
-      className="min-w-[20rem] border-[#dee2e6] border-2 border-solid rounded h-12 relative cursor-pointer  p-3 duration-200"
+      className="min-w-[20rem] border-[#dee2e6] border-2 border-solid rounded h-12 relative cursor-pointer  p-3 duration-200 dark:bg-gray-700"
       onClick={handleClick}
     >
       <span
         id="input"
-        className="w-3/4 absolute left-5 top-1/4 text-left text-[#9CA38F]  pointer-events-none"
+        className="w-3/4 absolute left-5 top-1/4 text-left text-[#9CA38F]  pointer-events-none dark:text-white"
       >
         {text}
       </span>

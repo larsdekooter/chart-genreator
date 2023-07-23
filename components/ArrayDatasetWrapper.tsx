@@ -5,16 +5,18 @@ import { renderToStaticMarkup } from "react-dom/server";
 export default function ArrayDatasetWrapper({ id }: { id: string }) {
   return (
     <div
-      className="w-fit bg-[#fbfbff] px-20 py-10 h-fit flex flex-col justify-center items-center rounded-2xl"
+      className="w-fit bg-[#fbfbff] px-20 py-10 h-fit flex flex-col justify-center items-center rounded-2xl dark:bg-[#2b2a2a]"
       id={id}
     >
-      <h1 className={`text-4xl ${spaceMono.className}`}>Datasets</h1>
+      <h1 className={`text-4xl ${spaceMono.className} dark:text-white`}>
+        Datasets
+      </h1>
 
       <div className="flex flex-col items-center">
         <ArrayDatasetComponent />
       </div>
       <button
-        className={`${spaceMono.className} w-fit p-3 bg-[#f4f4f5] rounded-xl hover:border-[#bed7f1] border-[2px] hover:bg-[#e0ecf8] border-[#f4f4f5] mb-5`}
+        className={`${spaceMono.className} w-fit p-3 bg-[#f4f4f5] rounded-xl hover:border-[#bed7f1] border-[2px] hover:bg-[#e0ecf8] border-[#f4f4f5] mb-5 dark:bg-[#242222] dark:border-[#242222] dark:text-white dark:hover:border-[blue]`}
         onClick={(e) => {
           const { currentTarget: target } = e;
           const { parentElement: parent } = target;

@@ -5,7 +5,7 @@ import { MouseEvent, MouseEventHandler, ReactNode } from "react";
 export default function Option({
   children,
   value,
-  onChoose: onClick,
+  onChoose,
 }: {
   children?: ReactNode;
   value: string;
@@ -15,9 +15,15 @@ export default function Option({
 }) {
   return (
     <option
-      className="appearance-none w-full h-full absolute text-left top-0 -z-10 duration-200 border-x-2 border-[#dee2e6] border-solid left-0 pl-5 pt-2 cursor-pointer hover:bg-slate-200 capitalize hidden text-black"
+      className="appearance-none w-full h-full absolute text-left top-0 -z-10 duration-200 border-x-2 border-[#dee2e6] border-solid left-0 pl-5 pt-2 cursor-pointer hover:bg-slate-200 capitalize hidden text-black dark:border-[#2e2d2d] dark:hover:bg-slate-700 dark:text-white dark:bg-black bg-white"
       onClick={(event) => {
+        event.preventDefault();
         const optionClicked = event.currentTarget as HTMLOptionElement;
+        optionClicked.style.borderColor =
+          window.document.documentElement.classList.contains("dark")
+            ? "#2e2d2d"
+            : "#dee2e6";
+
         const menu = optionClicked.parentElement;
         if (!menu) return;
         const menuChildren = menu.children;
@@ -27,7 +33,7 @@ export default function Option({
             child.innerText = optionClicked.value;
           }
         }
-        onClick(event);
+        onChoose(event);
       }}
       value={value}
     >
