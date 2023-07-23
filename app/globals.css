@@ -44,3 +44,39 @@
   content: "🌙";
   background-color: rgb(89, 89, 128);
 }
+
+.checkbox {
+  appearance: none;
+  position: relative;
+  height: 25px;
+  width: 50px;
+  background-color: black;
+  border-radius: 5rem;
+  transition: background-color 0.2s;
+  cursor: pointer;
+  outline: none;
+}
+
+.checkbox::after {
+  position: absolute;
+  content: "";
+  color: red;
+  height: 20px;
+  width: 20px;
+  display: grid;
+  place-items: center;
+  top: 50%;
+  left: 30%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background-color: red;
+  transition: left 0.2s, color 0.2s, content 0.2s, background-color 0.2s;
+  text-align: center;
+  font-size: 30px;
+}
+
+.checkbox:checked::after {
+  left: 70%;
+  color: green;
+  background-color: green;
+}

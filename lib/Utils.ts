@@ -153,7 +153,11 @@ export default class Utils {
   static downloadChart(extension: "JPG" | "PNG", id: string, name: string) {
     const link = document.createElement("a");
     link.download = `${name}.${extension.toLowerCase()}`;
-    link.href = (document.getElementById(id) as HTMLCanvasElement).toDataURL();
+    const canvasElement = document.getElementById(
+      id
+    ) as HTMLCanvasElement | null;
+    if (!canvasElement) return alert("There is no chart to be downloaded");
+    link.href = canvasElement.toDataURL();
     link.click();
   }
 }

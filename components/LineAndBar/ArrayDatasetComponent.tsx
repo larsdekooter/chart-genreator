@@ -1,7 +1,9 @@
 import { spaceMono } from "@/lib/fonts";
+import { useState } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 
 export default function ArrayDatasetComponent({}: {}) {
+  const [opacity, setOpacity] = useState(0.5);
   return (
     <div className="flex flex-col items-center">
       <div className="flex flex-col items-center">
@@ -55,6 +57,7 @@ export default function ArrayDatasetComponent({}: {}) {
         className="w-72 my-5 rounded-2xl p-2 bg-[#f4f4f5] outline-none border-[1px] border-black border-dashed dark:bg-gray-800 dark:border-white dark:text-white"
         placeholder="Label"
       ></input>
+
       <div className="w-full border-t-[1px] border-black border-dashed mb-5 dark:border-white"></div>
     </div>
   );

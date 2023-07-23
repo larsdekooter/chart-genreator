@@ -10,3 +10,5 @@ export type ChartType =
   | "doughnut"
   | "pie"
   | "scatter";
+
+export type PartialOtherChartData = Partial<{ fill: boolean }>;
