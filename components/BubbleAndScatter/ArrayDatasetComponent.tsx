@@ -1,25 +1,14 @@
 import { spaceMono } from "@/lib/fonts";
 import { renderToStaticMarkup } from "react-dom/server";
+import ArrayDatasetComponentPosition from "./ArrayDatasetComponentPosition";
 
 export default function ArrayDatasetComponent({}: {}) {
   return (
-    <div className="flex flex-col items-center">
-      <div className="flex flex-col items-center">
-        <input
-          type="number"
-          className="w-72 my-5 rounded-2xl p-2 bg-[#f4f4f5] outline-none border-[1px] border-black border-dashed dark:bg-gray-800 dark:border-white dark:text-white"
-          placeholder="Y position"
-        />
-        <input
-          type="number"
-          className="w-72 my-5 rounded-2xl p-2 bg-[#f4f4f5] outline-none border-[1px] border-black border-dashed dark:bg-gray-800 dark:border-white dark:text-white"
-          placeholder="Y position"
-        />
-        <input
-          type="number"
-          className="w-72 my-5 rounded-2xl p-2 bg-[#f4f4f5] outline-none border-[1px] border-black border-dashed dark:bg-gray-800 dark:border-white dark:text-white"
-          placeholder="Y position"
-        />
+    <div className="flex flex-col items-center w-full">
+      <div className="flex flex-col items-center w-full">
+        <ArrayDatasetComponentPosition />
+        <ArrayDatasetComponentPosition />
+        <ArrayDatasetComponentPosition />
       </div>
       <button
         className={`${spaceMono.className} w-fit p-3 bg-[#f4f4f5] rounded-xl hover:border-[#bed7f1] border-[2px] hover:bg-[#e0ecf8] border-[#f4f4f5] mb-5 dark:bg-[#242222] dark:border-[#242222] dark:text-white dark:hover:border-[blue]`}
@@ -27,11 +16,7 @@ export default function ArrayDatasetComponent({}: {}) {
           const { currentTarget: target } = e;
           const { parentElement: parent } = target;
           const newInput = renderToStaticMarkup(
-            <input
-              type="number"
-              className="w-72 my-5 rounded-2xl p-2 bg-[#f4f4f5] outline-none border-[1px] border-black border-dashed dark:bg-gray-800 dark:border-white dark:text-white"
-              placeholder="Y position"
-            />
+            <ArrayDatasetComponentPosition />
           );
           const placeholder = document.createElement("div");
           placeholder.innerHTML = newInput;

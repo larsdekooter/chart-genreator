@@ -2,6 +2,7 @@
 
 import LineAndBarComponents from "@/components/LineAndBar/index";
 import BubbleAndScatterComponents from "@/components/BubbleAndScatter/index";
+import PieAndDoughnut from "@/components/PieAndDoughnut/index";
 import ChartComponent from "@/components/Chart";
 import Input from "@/components/Input";
 import Layout from "@/components/Layout";
@@ -378,12 +379,15 @@ export default function Home() {
                     const dataValues: BubbleDataPoint[] = [];
                     //@ts-ignore
                     for (let i = 0; i < dataInputs?.children.length; i++) {
-                      let inputChild = dataInputs?.children.item(
+                      let child = dataInputs?.children.item(
                         i
-                      ) as HTMLInputElement;
+                      ) as HTMLDivElement;
+                      const xPos = child.children.item(0) as HTMLInputElement;
+                      const yPos = child.children.item(1) as HTMLInputElement;
+
                       dataValues.push({
-                        y: parseInt(inputChild.value),
-                        x: parseInt(chartData.labels?.[i] as string),
+                        x: parseInt(xPos.value),
+                        y: parseInt(yPos.value),
                         r: parseInt(radiusInput.value),
                       });
                     }
