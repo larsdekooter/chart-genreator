@@ -19,7 +19,12 @@ import {
 import { useState } from "react";
 import { flushSync } from "react-dom";
 import { createRoot } from "react-dom/client";
-import { BubbleDataPoint } from "chart.js";
+import {
+  BubbleDataPoint,
+  ChartDataset,
+  PieControllerDatasetOptions,
+} from "chart.js";
+import { Doughnut } from "react-chartjs-2";
 
 export default function Home() {
   const [chartData, setChartData] = useState({
@@ -285,11 +290,6 @@ export default function Home() {
         <div className="h-1 w-screen overflow-hidden border-t-[#eaecef] border-t-2 border-dashed mt-40"></div>
         <>
           <h1
-            className={`text-4xl my-5 ${spaceMono.className} dark:text-white`}
-          >
-            Create your own Chart
-          </h1>
-          <h1
             className={`text-3xl my-5 ${spaceMono.className} dark:text-white`}
           >
             Bubble And Scatter chart
@@ -347,7 +347,7 @@ export default function Home() {
                     setChartData(data);
                   }}
                 >
-                  Confirm Labels
+                  Confirm Opacity
                 </button>
               </div>
               <div className="flex flex-col items-center"></div>
@@ -444,6 +444,175 @@ export default function Home() {
           <div
             className="h-[400px] w-[1000px] border-[1px] border-dashed border-black dark:border-white my-20 flex items-center"
             id="chartHolder2"
+          ></div>
+          <Input text="Choose File Type">
+            {["JPG", "PNG"].map((type) => (
+              <Option
+                key={type}
+                value={type}
+                onChoose={(event) => {
+                  Utils.downloadChart(
+                    event.currentTarget.value as "PNG" | "JPG",
+                    "customBubbleOrScatterChart",
+                    "Custom_Chart"
+                  );
+                }}
+              >
+                {type}
+              </Option>
+            ))}
+          </Input>
+        </>
+        <div className="h-1 w-screen overflow-hidden border-t-[#eaecef] border-t-2 border-dashed mt-40"></div>
+        <>
+          <h1
+            className={`text-3xl my-5 ${spaceMono.className} dark:text-white`}
+          >
+            Pie and Doughnut Chart
+          </h1>
+          <Input text="Choose your type of Chart">
+            {["Pie", "Doughnut"].map((type) => (
+              <Option
+                key={type}
+                value={type}
+                onChoose={(e) => {
+                  setChartType(
+                    e.currentTarget.value.toLowerCase() as
+                      | "line"
+                      | "bar"
+                      | "bubble"
+                      | "doughnut"
+                      | "pie"
+                      | "scatter"
+                  );
+                }}
+              >
+                {type}
+              </Option>
+            ))}
+          </Input>
+          <div className="h-96"></div>
+          <div className="flex flex-row justify-evenly w-full">
+            <div className="flex flex-col items-center">
+              <div className="flex flex-col items-center">
+                <PieAndDoughnut.ArrayInputWrapper id="labelsInputPieOrDoughnut" />
+                <button
+                  className={`${spaceMono.className} w-fit p-3 bg-green-400 rounded-xl hover:border-green-500 border-[1px] border-b-green-400 hover:bg-green-300 duration-200`}
+                  onClick={(e) => {
+                    const AIW = document.getElementById(
+                      "labelsInputPieOrDoughnut"
+                    );
+                    const parentOfInputs = AIW?.children?.item(
+                      1
+                    ) as HTMLDivElement;
+                    const values = [];
+                    let child: HTMLInputElement;
+                    //@ts-ignore
+                    for (child of parentOfInputs.children) {
+                      values.push(child.value);
+                    }
+                    const input = AIW?.children
+                      .item(AIW.children.length - 1)
+                      ?.children.item(0) as HTMLInputElement;
+                    setChartOpacity(Number(input.value));
+                    const data = chartData;
+                    data.labels = values.filter((value) => value !== "");
+                    setChartData(data);
+                    console.log(chartData);
+                  }}
+                >
+                  Confirm Labels
+                </button>
+              </div>
+              <div className="flex flex-col items-center"></div>
+            </div>
+            <div className="flex flex-col items-center">
+              <PieAndDoughnut.ArrayDatasetWrapper id="datasetInputPieOrDoughnut" />
+              <button
+                className={`${spaceMono.className} w-fit p-3 bg-green-400 rounded-xl hover:border-green-500 border-[1px] border-b-green-400 hover:bg-green-300 duration-200`}
+                onClick={(e) => {
+                  const ADW = document.getElementById(
+                    "datasetInputPieOrDoughnut"
+                  );
+                  const parentOfDatasets = ADW?.children.item(1);
+                  let divChild: HTMLDivElement;
+                  const datasets: ChartDataset[] = [];
+                  //@ts-ignore
+                  for (divChild of parentOfDatasets?.children) {
+                    // [0: DataInputs[], 1: AddDataButton, 2: LabelInput, 3: BorderLine]
+                    const dataInputs = divChild.children.item(0);
+
+                    const labelInput = divChild.children.item(
+                      2
+                    ) as HTMLInputElement;
+                    const dataValues: number[] = [];
+                    const colorValues: string[] = [];
+                    //@ts-ignore
+                    for (let i = 0; i < dataInputs?.children.length; i++) {
+                      let child = dataInputs?.children.item(
+                        i
+                      ) as HTMLDivElement;
+                      const data = child.children.item(0) as HTMLInputElement;
+                      const backgroundColorInput = child.children.item(
+                        1
+                      ) as HTMLInputElement;
+
+                      dataValues.push(parseInt(data.value));
+                      const backgroundColor = hexToRGBA(
+                        backgroundColorInput.value,
+                        chartOpacity
+                      );
+                      colorValues.push(backgroundColor);
+                    }
+                    const label = labelInput.value;
+
+                    datasets.push({
+                      data: dataValues,
+                      label,
+                      backgroundColor: colorValues,
+                    });
+                  }
+                  const data = chartData;
+                  data.datasets = datasets;
+                  setChartData(data);
+                }}
+              >
+                Confirm Datasets
+              </button>
+            </div>
+          </div>
+          <div className="h-20"></div>
+          <button
+            className={`${spaceMono.className} w-fit py-3 px-96 text-2xl bg-blue-400 rounded-xl hover:border-blue-500 border-[1px] border-b-blue-400 hover:bg-blue-300 duration-200`}
+            onClick={(e) => {
+              const data = chartData;
+              const type = chartType;
+              const chart = (
+                <ChartComponent
+                  data={data}
+                  type={type}
+                  options={{
+                    elements: {
+                      line: { fill: otherChartData.fill ? "start" : undefined },
+                    },
+                  }}
+                  id="customBubbleOrScatterChart"
+                />
+              );
+              const chartHolderDiv = document.getElementById(
+                "chartHolder3"
+              ) as HTMLDivElement;
+              const root = createRoot(chartHolderDiv);
+              flushSync(() => {
+                root.render(chart);
+              });
+            }}
+          >
+            Generate Chart
+          </button>
+          <div
+            className="h-[400px] w-[1000px] border-[1px] border-dashed border-black dark:border-white my-20 flex items-center"
+            id="chartHolder3"
           ></div>
           <Input text="Choose File Type">
             {["JPG", "PNG"].map((type) => (
