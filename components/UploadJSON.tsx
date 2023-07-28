@@ -19,6 +19,7 @@ export default function UploadJSON() {
     const reader = new FileReader();
     reader.onload = (e) => {
       const json = JSON.parse(e.target?.result as string);
+      if (!json.data || !json.type) return alert("Json is invalid");
       const chart = (
         <ChartComponent
           data={json.data}
