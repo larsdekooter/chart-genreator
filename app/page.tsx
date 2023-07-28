@@ -59,21 +59,32 @@ export default function Home() {
               ],
             }}
             options={{
+              scales: {
+                y: {
+                  ticks: { color: "#978f8f" },
+                },
+                x: {
+                  ticks: { color: "#978f8f" },
+                },
+              },
               elements: {
                 line: {
                   tension: 0,
                   borderWidth: 2,
-                  // borderColor: "rgba(255, 99, 132, 1)",
                   fill: "start",
-                  // backgroundColor: "rgba(0,0,0, 0.3)",
                 },
                 point: { backgroundColor: "rgba(47, 97, 68, 1)" },
               },
-              //@ts-ignore
               plugins: {
                 title: {
                   display: true,
                   text: "Example Chart",
+                  color: "#978f8f",
+                },
+                legend: {
+                  labels: {
+                    color: "#978f8f",
+                  },
                 },
               },
             }}
