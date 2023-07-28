@@ -1,20 +1,32 @@
 {
   "data": {
-    "labels": ["kooter", "koote2", "kooter3"],
+    "labels": ["kooter", "kooter2", "kooter3"],
     "datasets": [
       {
-        "data": [1, 2, 3],
-        "backgroundColor": "rgba(255, 0, 0, 0.1)",
-        "borderColor": "rgb(255, 0, 0)",
-        "label": "Example"
+        "data": [8375, -5738, 7853],
+        "backgroundColor": "rgba(255, 255, 0, 1)",
+        "label": "Example",
+        "color": "white"
       }
     ]
   },
-  "type": "line",
+  "type": "bar",
   "options": {
     "elements": {
       "line": {
         "fill": "start"
+      }
+    },
+    "scales": {
+      "x": {
+        "grid": {
+          "color": "white"
+        }
+      },
+      "y": {
+        "grid": {
+          "color": "white"
+        }
       }
     }
   }
