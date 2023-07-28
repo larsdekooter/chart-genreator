@@ -80,7 +80,7 @@ export default function ChartComponent({
             data={data as ChartData<"line">}
             width={width}
             height={height}
-            options={options}
+            options={options as ChartOptions<"line">}
             id={id}
           />
         );
@@ -90,7 +90,7 @@ export default function ChartComponent({
             data={data as ChartData<"bar">}
             height={height}
             width={width}
-            options={options}
+            options={options as ChartOptions<"bar">}
             id={id}
           />
         );
@@ -100,7 +100,7 @@ export default function ChartComponent({
             data={data as ChartData<"bubble">}
             height={height}
             width={width}
-            options={options}
+            options={options as ChartOptions<"bubble">}
             id={id}
           />
         );
@@ -110,7 +110,7 @@ export default function ChartComponent({
             data={data as ChartData<"doughnut">}
             height={height}
             width={width}
-            options={options}
+            options={options as ChartOptions<"doughnut">}
             id={id}
           />
         );
@@ -120,7 +120,7 @@ export default function ChartComponent({
             data={data as ChartData<"pie">}
             height={height}
             width={width}
-            options={options}
+            options={options as ChartOptions<"pie">}
             id={id}
           />
         );
@@ -130,7 +130,7 @@ export default function ChartComponent({
             data={data as ChartData<"scatter">}
             height={height}
             width={width}
-            options={options}
+            options={options as ChartOptions<"scatter">}
             id={id}
           />
         );
@@ -162,7 +162,7 @@ export default function ChartComponent({
             data={data as ChartData<"line">}
             width={1000}
             height={height}
-            options={options}
+            options={options as ChartOptions<"line">}
             id={id}
           />
         );
@@ -178,7 +178,7 @@ export default function ChartComponent({
               data={data as ChartData<"line">}
               width={width}
               height={height}
-              options={options}
+              options={options as ChartOptions<"line">}
               id={id}
             />
             <button
@@ -199,7 +199,7 @@ export default function ChartComponent({
                     data={data as ChartData<"line">}
                     height={height}
                     width={width}
-                    options={options}
+                    options={options as ChartOptions<"line">}
                     id={id}
                   />
                 );
@@ -223,7 +223,7 @@ export default function ChartComponent({
               data={data as ChartData<"bar">}
               height={height}
               width={width}
-              options={options}
+              options={options as ChartOptions<"bar">}
               id={id}
             />
             <button
@@ -244,7 +244,7 @@ export default function ChartComponent({
                     data={data as ChartData<"bar">}
                     height={height}
                     width={width}
-                    options={options}
+                    options={options as ChartOptions<"bar">}
                     id={id}
                   />
                 );
@@ -268,7 +268,7 @@ export default function ChartComponent({
               data={data as ChartData<"bubble">}
               height={height}
               width={width}
-              options={options}
+              options={options as ChartOptions<"bubble">}
               id={id}
             />{" "}
             <button
@@ -289,7 +289,7 @@ export default function ChartComponent({
                     data={data as ChartData<"bubble">}
                     height={height}
                     width={width}
-                    options={options}
+                    options={options as ChartOptions<"bubble">}
                     id={id}
                   />
                 );
@@ -313,7 +313,7 @@ export default function ChartComponent({
               data={data as ChartData<"doughnut">}
               height={height}
               width={width}
-              options={options}
+              options={options as ChartOptions<"doughnut">}
               id={id}
             />{" "}
             <button
@@ -334,7 +334,7 @@ export default function ChartComponent({
                     data={data as ChartData<"doughnut">}
                     height={height}
                     width={width}
-                    options={options}
+                    options={options as ChartOptions<"doughnut">}
                     id={id}
                   />
                 );
@@ -358,7 +358,7 @@ export default function ChartComponent({
               data={data as ChartData<"pie">}
               height={height}
               width={width}
-              options={options}
+              options={options as ChartOptions<"pie">}
               id={id}
             />{" "}
             <button
@@ -379,7 +379,7 @@ export default function ChartComponent({
                     data={data as ChartData<"pie">}
                     height={height}
                     width={width}
-                    options={options}
+                    options={options as ChartOptions<"pie">}
                     id={id}
                   />
                 );
@@ -403,7 +403,7 @@ export default function ChartComponent({
               data={data as ChartData<"scatter">}
               height={height}
               width={width}
-              options={options}
+              options={options as ChartOptions<"scatter">}
               id={id}
             />{" "}
             <button
@@ -424,7 +424,7 @@ export default function ChartComponent({
                     data={data as ChartData<"scatter">}
                     height={height}
                     width={width}
-                    options={options}
+                    options={options as ChartOptions<"scatter">}
                     id={id}
                   />
                 );
@@ -466,11 +466,11 @@ export default function ChartComponent({
                   return set;
                 });
                 const newCanvas = (
-                  <Line
-                    data={data as ChartData<"line">}
+                  <PolarArea
+                    data={data as ChartData<"polarArea">}
                     height={height}
                     width={width}
-                    options={options}
+                    options={options as ChartOptions<"polarArea">}
                     id={id}
                   />
                 );
@@ -513,11 +513,11 @@ export default function ChartComponent({
                   return set;
                 });
                 const newCanvas = (
-                  <Line
-                    data={data as ChartData<"line">}
+                  <Radar
+                    data={data as ChartData<"radar">}
                     height={height}
                     width={width}
-                    options={options}
+                    options={options as ChartOptions<"radar">}
                     id={id}
                   />
                 );
@@ -541,7 +541,7 @@ export default function ChartComponent({
               data={data as ChartData<"line">}
               width={1000}
               height={height}
-              options={options}
+              options={options as ChartOptions<"line">}
               id={id}
             />{" "}
             <button
@@ -562,7 +562,7 @@ export default function ChartComponent({
                     data={data as ChartData<"line">}
                     height={height}
                     width={width}
-                    options={options}
+                    options={options as ChartOptions<"line">}
                     id={id}
                   />
                 );
