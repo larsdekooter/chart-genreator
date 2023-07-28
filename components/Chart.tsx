@@ -16,6 +16,7 @@ import {
   ChartData,
   BarElement,
   ArcElement,
+  RadialLinearScale,
 } from "chart.js";
 
 ChartJs.register(
@@ -25,18 +26,36 @@ ChartJs.register(
   LineElement,
   BarElement,
   ArcElement,
+  RadialLinearScale,
   Filler,
   Title,
   Tooltip,
   Legend
 );
 
-import { Bar, Line, Scatter, Bubble, Doughnut, Pie } from "react-chartjs-2";
+import {
+  Bar,
+  Line,
+  Scatter,
+  Bubble,
+  Doughnut,
+  Pie,
+  PolarArea,
+  Radar,
+} from "react-chartjs-2";
 
 import { createRoot } from "react-dom/client";
 import { flushSync } from "react-dom";
 
-type ChartTypes = "line" | "bar" | "bubble" | "doughnut" | "pie" | "scatter";
+type ChartTypes =
+  | "line"
+  | "bar"
+  | "bubble"
+  | "doughnut"
+  | "pie"
+  | "scatter"
+  | "polarArea"
+  | "radar";
 
 export default function ChartComponent({
   data,
@@ -115,7 +134,28 @@ export default function ChartComponent({
             id={id}
           />
         );
-
+      case "polarArea":
+        return (
+          <PolarArea
+            data={data as ChartData<"polarArea">}
+            height={height}
+            width={width}
+            options={options as ChartOptions<"polarArea">}
+            id={id}
+            className="bg-white"
+          />
+        );
+      case "radar":
+        return (
+          <Radar
+            data={data as ChartData<"radar">}
+            height={height}
+            width={width}
+            options={options as ChartOptions<"radar">}
+            id={id}
+            className="bg-white"
+          />
+        );
       default:
         return (
           <Line
@@ -401,7 +441,99 @@ export default function ChartComponent({
             </button>
           </>
         );
+      case "polarArea": {
+        return (
+          <>
+            <PolarArea
+              data={data as ChartData<"polarArea">}
+              width={width}
+              height={height}
+              options={options as ChartOptions<"polarArea">}
+              id={id}
+              className="bg-white"
+            />
+            <button
+              className={`p-3 bg-[#f4f4f5] rounded-xl hover:border-[#bed7f1] border-[2px] hover:bg-[#e0ecf8] border-[#f4f4f5]  ${spaceMono.className} dark:bg-[#242222] dark:border-[#242222] dark:text-white dark:hover:border-[blue]`}
+              onClick={(event) => {
+                const button = event.currentTarget as HTMLButtonElement;
+                const parentElement = button.parentElement;
+                const canvasElement = parentElement
+                  ?.getElementsByTagName("canvas")
+                  .item(0);
+                canvasElement?.remove();
+                data.datasets.map((set) => {
+                  set.data = Utils.numbers({ count: 200, min: 0, max: 100 });
+                  return set;
+                });
+                const newCanvas = (
+                  <Line
+                    data={data as ChartData<"line">}
+                    height={height}
+                    width={width}
+                    options={options}
+                    id={id}
+                  />
+                );
 
+                if (!parentElement) return;
+                const root = createRoot(parentElement);
+                flushSync(() => {
+                  root.render(newCanvas);
+                });
+                parentElement.appendChild(button);
+              }}
+            >
+              Change Data
+            </button>
+          </>
+        );
+      }
+      case "radar":
+        return (
+          <>
+            <Radar
+              data={data as ChartData<"radar">}
+              width={width}
+              height={height}
+              options={options as ChartOptions<"radar">}
+              id={id}
+              className="bg-white"
+            />
+            <button
+              className={`p-3 bg-[#f4f4f5] rounded-xl hover:border-[#bed7f1] border-[2px] hover:bg-[#e0ecf8] border-[#f4f4f5]  ${spaceMono.className} dark:bg-[#242222] dark:border-[#242222] dark:text-white dark:hover:border-[blue]`}
+              onClick={(event) => {
+                const button = event.currentTarget as HTMLButtonElement;
+                const parentElement = button.parentElement;
+                const canvasElement = parentElement
+                  ?.getElementsByTagName("canvas")
+                  .item(0);
+                canvasElement?.remove();
+                data.datasets.map((set) => {
+                  set.data = Utils.numbers({ count: 200, min: 0, max: 100 });
+                  return set;
+                });
+                const newCanvas = (
+                  <Line
+                    data={data as ChartData<"line">}
+                    height={height}
+                    width={width}
+                    options={options}
+                    id={id}
+                  />
+                );
+
+                if (!parentElement) return;
+                const root = createRoot(parentElement);
+                flushSync(() => {
+                  root.render(newCanvas);
+                });
+                parentElement.appendChild(button);
+              }}
+            >
+              Change Data
+            </button>
+          </>
+        );
       default:
         return (
           <>

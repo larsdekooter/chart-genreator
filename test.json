@@ -1,0 +1,21 @@
+{
+  "data": {
+    "labels": ["kooter", "koote2", "kooter3"],
+    "datasets": [
+      {
+        "data": [1, 2, 3],
+        "backgroundColor": "rgba(255, 0, 0, 0.1)",
+        "borderColor": "rgb(255, 0, 0)",
+        "label": "Example"
+      }
+    ]
+  },
+  "type": "line",
+  "options": {
+    "elements": {
+      "line": {
+        "fill": "start"
+      }
+    }
+  }
+}

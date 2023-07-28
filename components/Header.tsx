@@ -2,6 +2,7 @@ import { spaceMono } from "@/lib/fonts";
 import Image from "next/image";
 import Link from "next/link";
 import ThemeSwitch from "./ThemeSwitch";
+import UploadJSON from "./UploadJSON";
 
 export default function Header() {
   return (
@@ -20,6 +21,7 @@ export default function Header() {
           className="absolute top-0"
         />
       </Link>
+      <UploadJSON />
       <ThemeSwitch />
     </header>
   );

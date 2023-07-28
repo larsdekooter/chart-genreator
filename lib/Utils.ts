@@ -1,3 +1,5 @@
+import { hexToRGBA } from "./functions";
+
 export default class Utils {
   static _seed = Date.now();
   static MONTHS = [
@@ -159,5 +161,18 @@ export default class Utils {
     if (!canvasElement) return alert("There is no chart to be downloaded");
     link.href = canvasElement.toDataURL();
     link.click();
+  }
+  static transparantize(hexOrRGB: string, opacity: number) {
+    const hexRegex = /^#([A-Fa-f0-9]{3}){1,2}$/;
+    const rgbRegex =
+      /^rgba?\(\s?\d+\s?,\s?\d+\s?,\s?\d+(\s?,\s?[01](\.\d+)?)?\s?\)$/;
+    if (hexRegex.test(hexOrRGB)) {
+      return hexToRGBA(hexOrRGB, opacity);
+    } else if (rgbRegex.test(hexOrRGB)) {
+      const numbers =
+        hexOrRGB.match(/\d+(\.\d+)?/g)?.map((num) => Number(num)) || [];
+      return `rgba(${numbers[0]}, ${numbers[1]}, ${numbers[2]}, ${opacity})`;
+    }
+    return "";
   }
 }

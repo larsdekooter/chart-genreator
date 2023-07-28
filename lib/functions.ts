@@ -40,3 +40,13 @@ export function rgbaToHex(rgbaColor: string) {
 
   return `#${hexR}${hexG}${hexB}`;
 }
+
+function isHexColor(color: string) {
+  return /^#([A-Fa-f0-9]{3}){1,2}$/.test(color);
+}
+
+function isRgbColor(color: string) {
+  return /^rgba?\(\s?\d+\s?,\s?\d+\s?,\s?\d+(\s?,\s?[01](\.\d+)?)?\s?\)$/.test(
+    color
+  );
+}
